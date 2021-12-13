@@ -1,11 +1,13 @@
 package fr.zom.enderia.data.models;
 
 import fr.zom.enderia.Enderia;
+import fr.zom.enderia.blocks.BaseBlock;
 import fr.zom.enderia.data.DataGen;
 import fr.zom.enderia.init.ModObjects;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.OreBlock;
+import net.minecraft.world.level.levelgen.DepthBasedReplacingBaseStoneSource;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.fmllegacy.RegistryObject;
 
@@ -24,7 +26,7 @@ public class BlockstateGenerator extends BlockStateProvider {
             Block b = block.get();
             String name = b.getRegistryName().getPath();
 
-            if(b instanceof OreBlock)
+            if(b instanceof BaseBlock)
             {
                 simpleBlock(b);
             }

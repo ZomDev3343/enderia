@@ -1,5 +1,6 @@
 package fr.zom.enderia;
 
+import fr.zom.enderia.init.ModObjects;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -40,6 +41,8 @@ public class Enderia {
         bus.addListener(this::setup);
         bus.addListener(this::clientSetup);
 
+        registerAll(bus);
+
     }
 
     public void setup(final FMLCommonSetupEvent e) {
@@ -48,5 +51,13 @@ public class Enderia {
 
     public void clientSetup(final FMLClientSetupEvent e) {
 
+    }
+
+    private void registerAll(IEventBus bus)
+    {
+        ModObjects.ITEMS.register(bus);
+        ModObjects.BLOCKS.register(bus);
+        ModObjects.BE.register(bus);
+        ModObjects.MENUS.register(bus);
     }
 }

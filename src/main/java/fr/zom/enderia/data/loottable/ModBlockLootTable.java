@@ -2,6 +2,7 @@ package fr.zom.enderia.data.loottable;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import fr.zom.enderia.init.ModObjects;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -19,16 +20,16 @@ public class ModBlockLootTable extends BlockLoot {
     @Override
     protected void addTables() {
 
+        add(ModObjects.ENDERITE_ORE.get(), createOreDrop(ModObjects.ENDERITE_ORE.get(), ModObjects.ENDERITE_RAW.get()));
+        dropSelf(ModObjects.ENDERITE_BLOCK.get());
+
     }
 
     @Override
     public void accept(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
         this.addTables();
         map.forEach((consumer::accept));
-
     }
-
-
 
     @Override
     protected Iterable<Block> getKnownBlocks() {

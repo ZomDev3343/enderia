@@ -17,8 +17,8 @@ public class LangGenerator extends LanguageProvider {
     @Override
     protected void addTranslations() {
 
-        add("itemGroup.technicia.blocks_group", "Enderia Blocks");
-        add("itemGroup.technicia.items_group", "Enderia Items");
+        add("itemGroup.enderia.blocks_group", "Enderia Blocks");
+        add("itemGroup.enderia.items_group", "Enderia Items");
 
         for (RegistryObject<Item> item :
                 ModObjects.ITEMS.getEntries()) {

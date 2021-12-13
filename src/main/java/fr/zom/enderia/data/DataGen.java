@@ -11,6 +11,7 @@ import fr.zom.enderia.data.other.tags.ItemTagGenerator;
 import fr.zom.enderia.data.recipes.RecipeGenerator;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,7 +19,7 @@ import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import java.util.Collections;
 
-@Mod.EventBusSubscriber(modid = Enderia.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Enderia.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class DataGen {
 
     public static final ExistingFileHelper DISABLED_FH = new ExistingFileHelper(Collections.emptyList(), Sets.newHashSet(), false, null, null);

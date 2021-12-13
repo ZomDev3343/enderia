@@ -2,6 +2,7 @@ package fr.zom.enderia.data.other.tags;
 
 import fr.zom.enderia.Enderia;
 import fr.zom.enderia.data.DataGen;
+import fr.zom.enderia.init.ModObjects;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
@@ -12,9 +13,6 @@ public class BlockTagGenerator extends BlockTagsProvider {
 
     private final Tag.Named<Block> WOOD_LEVEL = BlockTags.bind("forge:needs_wood_tool");
     private final Tag.Named<Block> GOLD_LEVEL = BlockTags.bind("forge:needs_gold_tool");
-    private final Tag.Named<Block> STONE_LEVEL = BlockTags.bind("minecraft:needs_stone_tool");
-    private final Tag.Named<Block> IRON_LEVEL = BlockTags.bind("minecraft:needs_iron_tool");
-    private final Tag.Named<Block> DIAMOND_LEVEL = BlockTags.bind("minecraft:needs_diamond_tool");
     private final Tag.Named<Block> NETHERITE_LEVEL = BlockTags.bind("forge:needs_netherite_tool");
 
     public enum ItemTier {
@@ -28,6 +26,10 @@ public class BlockTagGenerator extends BlockTagsProvider {
     @Override
     public void addTags() {
         // HARVEST LEVEL
+        tag(ModObjects.NEEDS_ENDRITE_TOOL);
+
+        pickaxeTool(ModObjects.ENDERITE_ORE.get(), ItemTier.DIAMOND);
+        pickaxeTool(ModObjects.ENDERITE_BLOCK.get(), ItemTier.DIAMOND);
 
     }
 
@@ -55,9 +57,9 @@ public class BlockTagGenerator extends BlockTagsProvider {
         switch (tier) {
             case WOOD -> tag(WOOD_LEVEL).add(block);
             case GOLD -> tag(GOLD_LEVEL).add(block);
-            case STONE -> tag(STONE_LEVEL).add(block);
-            case IRON -> tag(IRON_LEVEL).add(block);
-            case DIAMOND -> tag(DIAMOND_LEVEL).add(block);
+            case STONE -> tag(BlockTags.NEEDS_STONE_TOOL).add(block);
+            case IRON -> tag(BlockTags.NEEDS_IRON_TOOL).add(block);
+            case DIAMOND -> tag(BlockTags.NEEDS_DIAMOND_TOOL).add(block);
             case NETHERITE -> tag(NETHERITE_LEVEL).add(block);
         }
     }
