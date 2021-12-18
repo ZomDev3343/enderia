@@ -3,13 +3,16 @@ package fr.zom.enderia.init;
 import fr.zom.enderia.Enderia;
 import fr.zom.enderia.blocks.BaseBlock;
 import fr.zom.enderia.items.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.HorseArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -46,6 +49,9 @@ public class ModObjects {
     public static final RegistryObject<Item> ENDERITE_LEGGINGS = ITEMS.register("enderite_leggings", () -> new BaseItemArmor(ModArmorMaterial.ENDERITE, EquipmentSlot.LEGS));
     public static final RegistryObject<Item> ENDERITE_BOOTS = ITEMS.register("enderite_boots", () -> new BaseItemArmor(ModArmorMaterial.ENDERITE, EquipmentSlot.FEET));
 
+    public static final RegistryObject<Item> ENDERITE_HORSE_ARMOR = ITEMS.register("enderite_horse_armor", () -> new HorseArmorItem(13,
+            new ResourceLocation(Enderia.MODID, "textures/entity/horse/armor/enderite_horse_armor.png"),
+            new Item.Properties().tab(Enderia.ITEMS)));
 
     ///////////////////////////////////////////////////////////////////////////
     // BLOCKS

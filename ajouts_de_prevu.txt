@@ -1,0 +1,20 @@
+- Enderite
+- Armure en Enderite
+- Outils en Enderite
+- Armure de cheval en Enderite
+
+- Tnt qui téléporte les blocs autour d'elle (rayon 5 blocs) aux alentours
+
+- Nouveaux mobs
+	- Enderman de feu
+	- Zombie de l'end
+	- Creeper de l'end
+
+- Bloc téléporteur (quand on se place dessus et qu'on shift, ça nous téléporte)
+- Oeil activateur (pour lier les téléporteurs)
+- Bottes de dash (double saut -> envoie à 10 blocs devant, cooldown 1s)
+- Sceptre de téléportation (15 utilisations, pas de dégats d'ender pearl, envoie une ender pearl où on vise)
+
+- Elytra de dragon
+- Peau de dragon
+- Armure de dragon

@@ -30,6 +30,8 @@ public class ItemModelGen extends ItemModelProvider {
             {
                 generated(itemObject.get());
             }
+
+            generated(ModObjects.ENDERITE_HORSE_ARMOR.get());
         }
     }
 

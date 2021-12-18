@@ -20,7 +20,7 @@ public class Enderia {
 
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(Items.ENDER_PEARL);
+            return new ItemStack(ModObjects.ENDERITE_RAW.get());
         }
 
     };
@@ -29,7 +29,7 @@ public class Enderia {
 
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(Blocks.PURPUR_PILLAR);
+            return new ItemStack(ModObjects.ENDERITE_BLOCK.get());
         }
 
     };
