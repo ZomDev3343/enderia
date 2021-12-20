@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "enderia:block/teleporting_tnt_top",
+    "bottom": "enderia:block/teleporting_tnt_bottom",
+    "side": "enderia:block/teleporting_tnt_side"
+  }
+}

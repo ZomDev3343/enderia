@@ -2,13 +2,17 @@ package fr.zom.enderia.init;
 
 import fr.zom.enderia.Enderia;
 import fr.zom.enderia.blocks.BaseBlock;
+import fr.zom.enderia.blocks.TeleportingTntBlock;
+import fr.zom.enderia.entity.PrimedTPTnt;
 import fr.zom.enderia.items.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.horse.Horse;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -30,6 +34,7 @@ public class ModObjects {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Enderia.MODID);
     public static final DeferredRegister<BlockEntityType<?>> BE = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, Enderia.MODID);
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.CONTAINERS, Enderia.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Enderia.MODID);
 
     ///////////////////////////////////////////////////////////////////////////
     // ITEMS
@@ -60,6 +65,8 @@ public class ModObjects {
     public static final RegistryObject<Block> ENDERITE_ORE = createBlock("enderite_ore", () -> new BaseBlock(Material.STONE, 3f, 10f, SoundType.STONE));
     public static final RegistryObject<Block> ENDERITE_BLOCK = createBlock("enderite_block", () -> new BaseBlock(Material.STONE, 5f, 20f, SoundType.METAL));
 
+    public static final RegistryObject<Block> TELEPORTING_TNT = createBlock("teleporting_tnt", TeleportingTntBlock::new);
+
     private static RegistryObject<Block> createBlock(String name, Supplier<? extends Block> supp, CreativeModeTab group) {
         RegistryObject<Block> block = BLOCKS.register(name, supp);
         ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(group)));
@@ -74,7 +81,6 @@ public class ModObjects {
     // BLOCK ENTITIES
     ///////////////////////////////////////////////////////////////////////////
 
-
     ///////////////////////////////////////////////////////////////////////////
     // MENUS
     ///////////////////////////////////////////////////////////////////////////
@@ -84,6 +90,13 @@ public class ModObjects {
     // TAGS
     ///////////////////////////////////////////////////////////////////////////
 
+
+    ///////////////////////////////////////////////////////////////////////////
+    // ENTITIES
+    ///////////////////////////////////////////////////////////////////////////
+
+    public static final RegistryObject<EntityType<PrimedTPTnt>> PRIMED_TP_TNT = ENTITIES.register("primed_tp_tnt",
+            () -> EntityType.Builder.<PrimedTPTnt>of(PrimedTPTnt::new, MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).clientTrackingRange(10).updateInterval(10).build(Enderia.MODID + ":primed_tp_tnt"));
 
     /* Block Tags */
     public static final Tag.Named<Block> NEEDS_ENDRITE_TOOL = BlockTags.bind("needs_enderite_tool");

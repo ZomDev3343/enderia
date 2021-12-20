@@ -1,6 +1,8 @@
 package fr.zom.enderia;
 
+import fr.zom.enderia.entity.renderers.TPTntRenderer;
 import fr.zom.enderia.init.ModObjects;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -50,7 +52,7 @@ public class Enderia {
     }
 
     public void clientSetup(final FMLClientSetupEvent e) {
-
+        EntityRenderers.register(ModObjects.PRIMED_TP_TNT.get(), TPTntRenderer::new);
     }
 
     private void registerAll(IEventBus bus)
@@ -59,5 +61,6 @@ public class Enderia {
         ModObjects.BLOCKS.register(bus);
         ModObjects.BE.register(bus);
         ModObjects.MENUS.register(bus);
+        ModObjects.ENTITIES.register(bus);
     }
 }
