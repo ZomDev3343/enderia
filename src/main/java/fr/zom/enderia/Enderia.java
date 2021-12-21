@@ -5,8 +5,6 @@ import fr.zom.enderia.init.ModObjects;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -40,10 +38,10 @@ public class Enderia {
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        registerAll(bus);
+
         bus.addListener(this::setup);
         bus.addListener(this::clientSetup);
-
-        registerAll(bus);
 
     }
 

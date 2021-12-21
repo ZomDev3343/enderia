@@ -1,5 +1,6 @@
 package fr.zom.enderia.entity;
 
+import fr.zom.enderia.init.ModObjects;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -20,14 +21,15 @@ public class PrimedTPTnt extends PrimedTnt {
     }
 
     public PrimedTPTnt(Level p_32079_, double p_32080_, double p_32081_, double p_32082_, @Nullable LivingEntity p_32083_) {
-        super(p_32079_, p_32080_, p_32081_, p_32082_, p_32083_);
+        this(ModObjects.PRIMED_TP_TNT.get(), p_32079_);
+        this.setPos(p_32080_, p_32081_, p_32082_);
+        double d0 = p_32079_.random.nextDouble() * (double) ((float) Math.PI * 2F);
+        this.setDeltaMovement(-Math.sin(d0) * 0.02D, (double) 0.2F, -Math.cos(d0) * 0.02D);
+        this.setFuse(80);
+        this.xo = p_32080_;
+        this.yo = p_32081_;
+        this.zo = p_32082_;
     }
-
-    @Override
-    public int getFuse() {
-        return 40;
-    }
-
 
     @Override
     protected void explode() {
