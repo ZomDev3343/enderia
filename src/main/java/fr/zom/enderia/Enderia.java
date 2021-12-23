@@ -1,5 +1,6 @@
 package fr.zom.enderia;
 
+import fr.zom.enderia.entity.renderers.FireEndermanRenderer;
 import fr.zom.enderia.entity.renderers.TPTntRenderer;
 import fr.zom.enderia.init.ModObjects;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -50,15 +51,19 @@ public class Enderia {
     }
 
     public void clientSetup(final FMLClientSetupEvent e) {
-        EntityRenderers.register(ModObjects.PRIMED_TP_TNT.get(), TPTntRenderer::new);
+        registerEntityRenderers();
     }
 
-    private void registerAll(IEventBus bus)
-    {
+    private void registerAll(IEventBus bus) {
         ModObjects.ITEMS.register(bus);
         ModObjects.BLOCKS.register(bus);
         ModObjects.BE.register(bus);
         ModObjects.MENUS.register(bus);
         ModObjects.ENTITIES.register(bus);
+    }
+
+    private void registerEntityRenderers() {
+        EntityRenderers.register(ModObjects.PRIMED_TP_TNT.get(), TPTntRenderer::new);
+        EntityRenderers.register(ModObjects.FIRE_ENDERMAN.get(), FireEndermanRenderer::new);
     }
 }

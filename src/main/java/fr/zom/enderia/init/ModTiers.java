@@ -1,9 +1,5 @@
 package fr.zom.enderia.init;
 
-import cpw.mods.modlauncher.EnumerationHelper;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.ForgeTier;
 

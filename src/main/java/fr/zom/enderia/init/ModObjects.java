@@ -3,6 +3,7 @@ package fr.zom.enderia.init;
 import fr.zom.enderia.Enderia;
 import fr.zom.enderia.blocks.BaseBlock;
 import fr.zom.enderia.blocks.TeleportingTntBlock;
+import fr.zom.enderia.entity.FireEnderman;
 import fr.zom.enderia.entity.PrimedTPTnt;
 import fr.zom.enderia.items.*;
 import net.minecraft.resources.ResourceLocation;
@@ -12,7 +13,6 @@ import net.minecraft.tags.Tag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -35,6 +36,17 @@ public class ModObjects {
     public static final DeferredRegister<BlockEntityType<?>> BE = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, Enderia.MODID);
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.CONTAINERS, Enderia.MODID);
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Enderia.MODID);
+
+    ///////////////////////////////////////////////////////////////////////////
+    // ENTITIES
+    ///////////////////////////////////////////////////////////////////////////
+
+    public static final RegistryObject<EntityType<PrimedTPTnt>> PRIMED_TP_TNT = ENTITIES.register("primed_tp_tnt",
+            () -> EntityType.Builder.<PrimedTPTnt>of(PrimedTPTnt::new, MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).clientTrackingRange(10).updateInterval(10).build(Enderia.MODID + ":primed_tp_tnt"));
+
+    public static final RegistryObject<EntityType<FireEnderman>> FIRE_ENDERMAN = ENTITIES.register("fire_enderman",
+            () -> EntityType.Builder.of(FireEnderman::new, MobCategory.CREATURE).fireImmune().sized(0.6F, 2.9F).clientTrackingRange(10).updateInterval(10).build(Enderia.MODID + ":fire_enderman"));
+
 
     ///////////////////////////////////////////////////////////////////////////
     // ITEMS
@@ -57,6 +69,11 @@ public class ModObjects {
     public static final RegistryObject<Item> ENDERITE_HORSE_ARMOR = ITEMS.register("enderite_horse_armor", () -> new HorseArmorItem(13,
             new ResourceLocation(Enderia.MODID, "textures/entity/horse/armor/enderite_horse_armor.png"),
             new Item.Properties().tab(Enderia.ITEMS)));
+
+    public static final RegistryObject<Item> FIRE_ENDERMAN_SPAWN_EGG = ITEMS.register("fire_enderman_spawn_egg", () -> new ForgeSpawnEggItem(FIRE_ENDERMAN,
+            0x125356,
+            0x215487,
+            new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     ///////////////////////////////////////////////////////////////////////////
     // BLOCKS
@@ -89,14 +106,6 @@ public class ModObjects {
     ///////////////////////////////////////////////////////////////////////////
     // TAGS
     ///////////////////////////////////////////////////////////////////////////
-
-
-    ///////////////////////////////////////////////////////////////////////////
-    // ENTITIES
-    ///////////////////////////////////////////////////////////////////////////
-
-    public static final RegistryObject<EntityType<PrimedTPTnt>> PRIMED_TP_TNT = ENTITIES.register("primed_tp_tnt",
-            () -> EntityType.Builder.<PrimedTPTnt>of(PrimedTPTnt::new, MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).clientTrackingRange(10).updateInterval(10).build(Enderia.MODID + ":primed_tp_tnt"));
 
     /* Block Tags */
     public static final Tag.Named<Block> NEEDS_ENDRITE_TOOL = BlockTags.bind("needs_enderite_tool");

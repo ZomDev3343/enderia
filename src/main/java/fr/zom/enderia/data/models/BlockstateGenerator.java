@@ -6,8 +6,6 @@ import fr.zom.enderia.data.DataGen;
 import fr.zom.enderia.init.ModObjects;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.OreBlock;
-import net.minecraft.world.level.levelgen.DepthBasedReplacingBaseStoneSource;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.fmllegacy.RegistryObject;
 
