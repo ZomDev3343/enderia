@@ -3,6 +3,7 @@ package fr.zom.enderia.data.models;
 import fr.zom.enderia.Enderia;
 import fr.zom.enderia.data.DataGen;
 import fr.zom.enderia.init.ModObjects;
+import fr.zom.enderia.items.BaseItem;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -22,12 +23,9 @@ public class ItemModelGen extends ItemModelProvider {
             if (itemObject.get() instanceof BlockItem) {
                 blockItem(itemObject.get());
             }
-            else if(itemObject.get() instanceof TieredItem)
-            {
+            else if (itemObject.get() instanceof TieredItem) {
                 handheld(itemObject.get());
-            }
-            else
-            {
+            } else if (itemObject.get().getClass() == Item.class || itemObject.get().getClass() == BaseItem.class) {
                 generated(itemObject.get());
             }
 

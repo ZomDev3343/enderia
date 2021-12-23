@@ -27,6 +27,7 @@ import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.awt.*;
 import java.util.function.Supplier;
 
 public class ModObjects {
@@ -45,8 +46,7 @@ public class ModObjects {
             () -> EntityType.Builder.<PrimedTPTnt>of(PrimedTPTnt::new, MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).clientTrackingRange(10).updateInterval(10).build(Enderia.MODID + ":primed_tp_tnt"));
 
     public static final RegistryObject<EntityType<FireEnderman>> FIRE_ENDERMAN = ENTITIES.register("fire_enderman",
-            () -> EntityType.Builder.of(FireEnderman::new, MobCategory.CREATURE).fireImmune().sized(0.6F, 2.9F).clientTrackingRange(10).updateInterval(10).build(Enderia.MODID + ":fire_enderman"));
-
+            () -> EntityType.Builder.of(FireEnderman::new, MobCategory.MONSTER).fireImmune().sized(0.6F, 2.9F).clientTrackingRange(8).build(Enderia.MODID + ":fire_enderman"));
 
     ///////////////////////////////////////////////////////////////////////////
     // ITEMS
@@ -71,8 +71,8 @@ public class ModObjects {
             new Item.Properties().tab(Enderia.ITEMS)));
 
     public static final RegistryObject<Item> FIRE_ENDERMAN_SPAWN_EGG = ITEMS.register("fire_enderman_spawn_egg", () -> new ForgeSpawnEggItem(FIRE_ENDERMAN,
-            0x125356,
-            0x215487,
+            Color.ORANGE.getRGB(),
+            Color.DARK_GRAY.getRGB(),
             new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     ///////////////////////////////////////////////////////////////////////////
@@ -97,6 +97,7 @@ public class ModObjects {
     ///////////////////////////////////////////////////////////////////////////
     // BLOCK ENTITIES
     ///////////////////////////////////////////////////////////////////////////
+
 
     ///////////////////////////////////////////////////////////////////////////
     // MENUS
