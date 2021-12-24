@@ -1,5 +1,6 @@
 package fr.zom.enderia;
 
+import fr.zom.enderia.entity.renderers.EndZombieRenderer;
 import fr.zom.enderia.entity.renderers.FireEndermanRenderer;
 import fr.zom.enderia.entity.renderers.TPTntRenderer;
 import fr.zom.enderia.events.BiomeEvents;
@@ -68,5 +69,6 @@ public class Enderia {
     private void registerEntityRenderers() {
         EntityRenderers.register(ModObjects.PRIMED_TP_TNT.get(), TPTntRenderer::new);
         EntityRenderers.register(ModObjects.FIRE_ENDERMAN.get(), FireEndermanRenderer::new);
+        EntityRenderers.register(ModObjects.END_ZOMBIE.get(), EndZombieRenderer::new);
     }
 }

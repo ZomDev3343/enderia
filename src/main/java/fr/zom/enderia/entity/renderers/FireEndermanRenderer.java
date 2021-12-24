@@ -14,6 +14,6 @@ public class FireEndermanRenderer extends EndermanRenderer {
 
     @Override
     public ResourceLocation getTextureLocation(EnderMan pEntity) {
-        return new ResourceLocation(Enderia.MODID, "textures/entity/fire_enderman/fire_enderman.png");
+        return new ResourceLocation(Enderia.MODID, "textures/entity/enderman/fire_enderman.png");
     }
 }

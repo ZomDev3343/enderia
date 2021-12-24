@@ -32,6 +32,12 @@ public class ModEntityLootTable extends EntityLoot {
                         .add(LootItem.lootTableItem(Items.ENDER_PEARL)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0f, 2f)))
                                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0f, 1f))))));
+
+        add(ModObjects.END_ZOMBIE.get(), new LootTable.Builder().setParamSet(LootContextParamSets.ENTITY)
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1f))
+                        .add(LootItem.lootTableItem(Items.CHORUS_FRUIT)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0f, 3f)))
+                                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0f, 1f))))));
     }
 
     @Override

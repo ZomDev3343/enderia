@@ -3,6 +3,7 @@ package fr.zom.enderia.init;
 import fr.zom.enderia.Enderia;
 import fr.zom.enderia.blocks.BaseBlock;
 import fr.zom.enderia.blocks.TeleportingTntBlock;
+import fr.zom.enderia.entity.EndZombie;
 import fr.zom.enderia.entity.FireEnderman;
 import fr.zom.enderia.entity.PrimedTPTnt;
 import fr.zom.enderia.items.*;
@@ -48,6 +49,9 @@ public class ModObjects {
     public static final RegistryObject<EntityType<FireEnderman>> FIRE_ENDERMAN = ENTITIES.register("fire_enderman",
             () -> EntityType.Builder.of(FireEnderman::new, MobCategory.MONSTER).fireImmune().sized(0.6F, 2.9F).clientTrackingRange(8).build(Enderia.MODID + ":fire_enderman"));
 
+    public static final RegistryObject<EntityType<EndZombie>> END_ZOMBIE = ENTITIES.register("end_zombie",
+            () -> EntityType.Builder.<EndZombie>of(EndZombie::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build(Enderia.MODID + ":end_zombie"));
+
     ///////////////////////////////////////////////////////////////////////////
     // ITEMS
     ///////////////////////////////////////////////////////////////////////////
@@ -73,6 +77,11 @@ public class ModObjects {
     public static final RegistryObject<Item> FIRE_ENDERMAN_SPAWN_EGG = ITEMS.register("fire_enderman_spawn_egg", () -> new ForgeSpawnEggItem(FIRE_ENDERMAN,
             Color.ORANGE.getRGB(),
             Color.DARK_GRAY.getRGB(),
+            new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> END_ZOMBIE_SPAWN_EGG = ITEMS.register("end_zombie_spawn_egg", () -> new ForgeSpawnEggItem(END_ZOMBIE,
+            new Color(119, 41, 193).getRGB(),
+            new Color(60, 13, 97).getRGB(),
             new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     ///////////////////////////////////////////////////////////////////////////
