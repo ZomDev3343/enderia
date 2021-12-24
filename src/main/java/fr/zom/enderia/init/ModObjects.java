@@ -3,6 +3,7 @@ package fr.zom.enderia.init;
 import fr.zom.enderia.Enderia;
 import fr.zom.enderia.blocks.BaseBlock;
 import fr.zom.enderia.blocks.TeleportingTntBlock;
+import fr.zom.enderia.entity.EndCreeper;
 import fr.zom.enderia.entity.EndZombie;
 import fr.zom.enderia.entity.FireEnderman;
 import fr.zom.enderia.entity.PrimedTPTnt;
@@ -52,24 +53,24 @@ public class ModObjects {
     public static final RegistryObject<EntityType<EndZombie>> END_ZOMBIE = ENTITIES.register("end_zombie",
             () -> EntityType.Builder.<EndZombie>of(EndZombie::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build(Enderia.MODID + ":end_zombie"));
 
+    public static final RegistryObject<EntityType<EndCreeper>> END_CREEPER = ENTITIES.register("end_creeper",
+            () -> EntityType.Builder.of(EndCreeper::new, MobCategory.MONSTER).sized(0.6F, 1.7F).clientTrackingRange(8).build(Enderia.MODID + ":end_creeper"));
+
+
     ///////////////////////////////////////////////////////////////////////////
     // ITEMS
     ///////////////////////////////////////////////////////////////////////////
-
     public static final RegistryObject<Item> ENDERITE_RAW = ITEMS.register("enderite_raw", BaseItem::new);
     public static final RegistryObject<Item> ENDERITE_INGOT = ITEMS.register("enderite_ingot", BaseItem::new);
-
     public static final RegistryObject<Item> ENDERITE_SWORD = ITEMS.register("enderite_sword", () -> new BaseItemSword(ModTiers.ENDERITE_TIER));
     public static final RegistryObject<Item> ENDERITE_PICKAXE = ITEMS.register("enderite_pickaxe", () -> new BaseItemPickaxe(ModTiers.ENDERITE_TIER));
     public static final RegistryObject<Item> ENDERITE_AXE = ITEMS.register("enderite_axe", () -> new BaseItemAxe(ModTiers.ENDERITE_TIER));
     public static final RegistryObject<Item> ENDERITE_SHOVEL = ITEMS.register("enderite_shovel", () -> new BaseItemShovel(ModTiers.ENDERITE_TIER));
     public static final RegistryObject<Item> ENDERITE_HOE = ITEMS.register("enderite_hoe", () -> new BaseItemHoe(ModTiers.ENDERITE_TIER));
-
     public static final RegistryObject<Item> ENDERITE_HELMET = ITEMS.register("enderite_helmet", () -> new BaseItemArmor(ModArmorMaterial.ENDERITE, EquipmentSlot.HEAD));
     public static final RegistryObject<Item> ENDERITE_CHESTPLATE = ITEMS.register("enderite_chestplate", () -> new BaseItemArmor(ModArmorMaterial.ENDERITE, EquipmentSlot.CHEST));
     public static final RegistryObject<Item> ENDERITE_LEGGINGS = ITEMS.register("enderite_leggings", () -> new BaseItemArmor(ModArmorMaterial.ENDERITE, EquipmentSlot.LEGS));
     public static final RegistryObject<Item> ENDERITE_BOOTS = ITEMS.register("enderite_boots", () -> new BaseItemArmor(ModArmorMaterial.ENDERITE, EquipmentSlot.FEET));
-
     public static final RegistryObject<Item> ENDERITE_HORSE_ARMOR = ITEMS.register("enderite_horse_armor", () -> new HorseArmorItem(13,
             new ResourceLocation(Enderia.MODID, "textures/entity/horse/armor/enderite_horse_armor.png"),
             new Item.Properties().tab(Enderia.ITEMS)));
@@ -84,24 +85,22 @@ public class ModObjects {
             new Color(60, 13, 97).getRGB(),
             new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+    public static final RegistryObject<Item> END_CREEPER_SPAWN_EGG = ITEMS.register("end_creeper_spawn_egg", () -> new ForgeSpawnEggItem(END_CREEPER,
+            new Color(147, 108, 186).getRGB(),
+            new Color(67, 31, 104).getRGB(),
+            new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
     ///////////////////////////////////////////////////////////////////////////
     // BLOCKS
     ///////////////////////////////////////////////////////////////////////////
-
     public static final RegistryObject<Block> ENDERITE_ORE = createBlock("enderite_ore", () -> new BaseBlock(Material.STONE, 3f, 10f, SoundType.STONE));
     public static final RegistryObject<Block> ENDERITE_BLOCK = createBlock("enderite_block", () -> new BaseBlock(Material.STONE, 5f, 20f, SoundType.METAL));
 
     public static final RegistryObject<Block> TELEPORTING_TNT = createBlock("teleporting_tnt", TeleportingTntBlock::new);
-
-    private static RegistryObject<Block> createBlock(String name, Supplier<? extends Block> supp, CreativeModeTab group) {
-        RegistryObject<Block> block = BLOCKS.register(name, supp);
-        ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(group)));
-        return block;
-    }
-
-    private static RegistryObject<Block> createBlock(String name, Supplier<? extends Block> supp) {
-        return createBlock(name, supp, Enderia.BLOCKS);
-    }
+    /* Block Tags */
+    public static final Tag.Named<Block> NEEDS_ENDRITE_TOOL = BlockTags.bind("needs_enderite_tool");
+    /* Item Tags */
+    public static final Tag.Named<Item> ENDERITE_RAW_TAG = ItemTags.bind("enderite_raw");
 
     ///////////////////////////////////////////////////////////////////////////
     // BLOCK ENTITIES
@@ -116,14 +115,18 @@ public class ModObjects {
     ///////////////////////////////////////////////////////////////////////////
     // TAGS
     ///////////////////////////////////////////////////////////////////////////
-
-    /* Block Tags */
-    public static final Tag.Named<Block> NEEDS_ENDRITE_TOOL = BlockTags.bind("needs_enderite_tool");
-
-    /* Item Tags */
-    public static final Tag.Named<Item> ENDERITE_RAW_TAG = ItemTags.bind("enderite_raw");
     public static final Tag.Named<Item> ENDERITE_INGOT_TAG = ItemTags.bind("enderite_ingot");
     public static final Tag.Named<Item> STICKS = ItemTags.bind("sticks");
+
+    private static RegistryObject<Block> createBlock(String name, Supplier<? extends Block> supp, CreativeModeTab group) {
+        RegistryObject<Block> block = BLOCKS.register(name, supp);
+        ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(group)));
+        return block;
+    }
+
+    private static RegistryObject<Block> createBlock(String name, Supplier<? extends Block> supp) {
+        return createBlock(name, supp, Enderia.BLOCKS);
+    }
 
 
 }

@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Supplier;
 
-public enum ModArmorMaterial implements ArmorMaterial{
+public enum ModArmorMaterial implements ArmorMaterial {
 
     ENDERITE("enderia:enderite",
             35,
@@ -18,7 +18,7 @@ public enum ModArmorMaterial implements ArmorMaterial{
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             2.5f,
             0.1f,
-            ()-> Ingredient.of(ModObjects.ENDERITE_INGOT.get()));
+            () -> Ingredient.of(ModObjects.ENDERITE_INGOT.get()));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;

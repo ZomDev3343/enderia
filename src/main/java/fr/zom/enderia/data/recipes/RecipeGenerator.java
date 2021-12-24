@@ -113,8 +113,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .save(consumer, new ResourceLocation(Enderia.MODID, name));
     }
 
-    private void helmet(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike result)
-    {
+    private void helmet(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike result) {
         ShapedRecipeBuilder.shaped(result)
                 .pattern("MMM")
                 .pattern("M M")
@@ -123,8 +122,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .save(consumer, new ResourceLocation(Enderia.MODID, name + "_helmet"));
     }
 
-    private void chestplate(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike result)
-    {
+    private void chestplate(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike result) {
         ShapedRecipeBuilder.shaped(result)
                 .pattern("M M")
                 .pattern("MMM")
@@ -134,8 +132,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .save(consumer, new ResourceLocation(Enderia.MODID, name + "_chestplate"));
     }
 
-    private void leggings(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike result)
-    {
+    private void leggings(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike result) {
         ShapedRecipeBuilder.shaped(result)
                 .pattern("MMM")
                 .pattern("M M")
@@ -145,8 +142,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .save(consumer, new ResourceLocation(Enderia.MODID, name + "_leggings"));
     }
 
-    private void boots(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike result)
-    {
+    private void boots(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike result) {
         ShapedRecipeBuilder.shaped(result)
                 .pattern("M M")
                 .pattern("M M")
@@ -155,32 +151,28 @@ public class RecipeGenerator extends RecipeProvider {
                 .save(consumer, new ResourceLocation(Enderia.MODID, name + "_boots"));
     }
 
-    private void fullArmor(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots)
-    {
+    private void fullArmor(Consumer<FinishedRecipe> consumer, String name, Tag<Item> material, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots) {
         helmet(consumer, name, material, helmet);
         chestplate(consumer, name, material, chestplate);
         leggings(consumer, name, material, leggings);
         boots(consumer, name, material, boots);
     }
 
-    private void oreSmelting(Consumer<FinishedRecipe> consumer, String name, Tag<Item> ore, ItemLike result, float experience, int cookingTime)
-    {
+    private void oreSmelting(Consumer<FinishedRecipe> consumer, String name, Tag<Item> ore, ItemLike result, float experience, int cookingTime) {
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(ore), result, experience, (int) (cookingTime * 0.75f))
                 .unlockedBy("unlock", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ore).build()))
-                .save(consumer, new ResourceLocation(Enderia.MODID, name  + "_blasting"));
+                .save(consumer, new ResourceLocation(Enderia.MODID, name + "_blasting"));
 
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ore), result, experience, cookingTime)
                 .unlockedBy("unlock", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ore).build()))
                 .save(consumer, new ResourceLocation(Enderia.MODID, name + "_smelting"));
     }
 
-    private void oreSmelting(Consumer<FinishedRecipe> consumer, String name, Tag<Item> ore, ItemLike result, float experience)
-    {
+    private void oreSmelting(Consumer<FinishedRecipe> consumer, String name, Tag<Item> ore, ItemLike result, float experience) {
         oreSmelting(consumer, name, ore, result, experience, 200);
     }
 
-    private void oreSmelting(Consumer<FinishedRecipe> consumer, String name, Tag<Item> ore, ItemLike result)
-    {
+    private void oreSmelting(Consumer<FinishedRecipe> consumer, String name, Tag<Item> ore, ItemLike result) {
         oreSmelting(consumer, name, ore, result, 0.1f, 200);
     }
 

@@ -12,25 +12,22 @@ import net.minecraftforge.fmllegacy.RegistryObject;
 public class BlockstateGenerator extends BlockStateProvider {
 
     public BlockstateGenerator(DataGenerator gen) {
-        super(gen, Enderia.MODID,  DataGen.DISABLED_FH);
+        super(gen, Enderia.MODID, DataGen.DISABLED_FH);
     }
 
     @Override
     protected void registerStatesAndModels() {
 
-        for(RegistryObject<Block> block : ModObjects.BLOCKS.getEntries())
-        {
+        for (RegistryObject<Block> block : ModObjects.BLOCKS.getEntries()) {
 
             Block b = block.get();
             String name = b.getRegistryName().getPath();
 
-            if(b instanceof BaseBlock)
-            {
+            if (b instanceof BaseBlock) {
                 simpleBlock(b);
             }
 
         }
-
 
 
     }

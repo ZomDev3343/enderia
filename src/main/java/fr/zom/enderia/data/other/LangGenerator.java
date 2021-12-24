@@ -26,12 +26,10 @@ public class LangGenerator extends LanguageProvider {
         }
     }
 
-    private String formatName(String name)
-    {
-        String a = name.replace('_' , ' ');
+    private String formatName(String name) {
+        String a = name.replace('_', ' ');
         String[] b = a.split("[ ]");
-        for(String c : b)
-        {
+        for (String c : b) {
             a = a.replace(c, StringUtils.capitalize(c));
         }
         return a;

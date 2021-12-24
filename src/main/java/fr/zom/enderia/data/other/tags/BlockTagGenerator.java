@@ -15,10 +15,6 @@ public class BlockTagGenerator extends BlockTagsProvider {
     private final Tag.Named<Block> GOLD_LEVEL = BlockTags.bind("forge:needs_gold_tool");
     private final Tag.Named<Block> NETHERITE_LEVEL = BlockTags.bind("forge:needs_netherite_tool");
 
-    public enum ItemTier {
-        WOOD, GOLD, STONE, IRON, DIAMOND, NETHERITE;
-    }
-
     public BlockTagGenerator(DataGenerator gen) {
         super(gen, Enderia.MODID, DataGen.DISABLED_FH);
     }
@@ -62,5 +58,9 @@ public class BlockTagGenerator extends BlockTagsProvider {
             case DIAMOND -> tag(BlockTags.NEEDS_DIAMOND_TOOL).add(block);
             case NETHERITE -> tag(NETHERITE_LEVEL).add(block);
         }
+    }
+
+    public enum ItemTier {
+        WOOD, GOLD, STONE, IRON, DIAMOND, NETHERITE;
     }
 }

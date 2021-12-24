@@ -11,17 +11,19 @@ public class BiomeEvents {
     public static void addMobSpawns(final BiomeLoadingEvent e) {
 
         if (e.getCategory() == Biome.BiomeCategory.THEEND) {
-            e.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModObjects.FIRE_ENDERMAN.get(), 10, 1, 4));
-            e.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModObjects.END_ZOMBIE.get(), 5, 1, 2));
+            e.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModObjects.FIRE_ENDERMAN.get(), 11, 1, 4));
+            e.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModObjects.END_ZOMBIE.get(), 15, 1, 2));
+            e.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModObjects.END_CREEPER.get(), 5, 1, 2));
         } else if (e.getCategory() == Biome.BiomeCategory.NETHER) {
             e.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModObjects.FIRE_ENDERMAN.get(), 30, 1, 2));
+        } else {
+
+            commonSpawns(e);
         }
-
-        commonSpawns(e);
-
     }
 
     private static void commonSpawns(BiomeLoadingEvent e) {
         e.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModObjects.END_ZOMBIE.get(), 35, 1, 2));
+        e.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModObjects.END_CREEPER.get(), 20, 1, 2));
     }
 }

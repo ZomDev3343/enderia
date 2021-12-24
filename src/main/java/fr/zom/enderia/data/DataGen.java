@@ -25,13 +25,11 @@ public class DataGen {
     public static final ExistingFileHelper DISABLED_FH = new ExistingFileHelper(Collections.emptyList(), Sets.newHashSet(), false, null, null);
 
     @SubscribeEvent
-    public static void dataGen(final GatherDataEvent e)
-    {
+    public static void dataGen(final GatherDataEvent e) {
 
         DataGenerator gen = e.getGenerator();
 
-        if(e.includeServer())
-        {
+        if (e.includeServer()) {
             gen.addProvider(new RecipeGenerator(gen));
             BlockTagsProvider blockTags = new BlockTagGenerator(gen);
             gen.addProvider(blockTags);
@@ -39,8 +37,7 @@ public class DataGen {
             gen.addProvider(new LootTablesGenerator(gen));
         }
 
-        if(e.includeClient())
-        {
+        if (e.includeClient()) {
             gen.addProvider(new ItemModelGen(gen));
             gen.addProvider(new LangGenerator(gen));
             gen.addProvider(new BlockstateGenerator(gen));
