@@ -5,6 +5,7 @@ import fr.zom.enderia.entity.renderers.EndZombieRenderer;
 import fr.zom.enderia.entity.renderers.FireEndermanRenderer;
 import fr.zom.enderia.entity.renderers.TPTntRenderer;
 import fr.zom.enderia.events.BiomeEvents;
+import fr.zom.enderia.events.LootTableModificationEvent;
 import fr.zom.enderia.init.ModObjects;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
@@ -53,6 +54,7 @@ public class Enderia {
     public void setup(final FMLCommonSetupEvent e) {
         IEventBus bus = MinecraftForge.EVENT_BUS;
         bus.addListener(BiomeEvents::addMobSpawns);
+        bus.addListener(LootTableModificationEvent::modifyLootTables);
     }
 
     public void clientSetup(final FMLClientSetupEvent e) {

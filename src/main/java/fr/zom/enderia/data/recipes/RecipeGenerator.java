@@ -39,6 +39,14 @@ public class RecipeGenerator extends RecipeProvider {
                 ModObjects.ENDERITE_LEGGINGS.get(),
                 ModObjects.ENDERITE_BOOTS.get());
 
+        fullArmor(consumer,
+                "dragon",
+                ModObjects.DRAGON_SKIN_TAG,
+                ModObjects.DRAGON_HELMET.get(),
+                ModObjects.DRAGON_CHESTPLATE.get(),
+                ModObjects.DRAGON_LEGGINGS.get(),
+                ModObjects.DRAGON_BOOTS.get());
+
     }
 
     private void ingotsToBlock(Consumer<FinishedRecipe> consumer, String name, ItemLike ingots, ItemLike block) {

@@ -18,7 +18,16 @@ public enum ModArmorMaterial implements ArmorMaterial {
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             2.5f,
             0.1f,
-            () -> Ingredient.of(ModObjects.ENDERITE_INGOT.get()));
+            () -> Ingredient.of(ModObjects.ENDERITE_INGOT.get())),
+
+    DRAGON("enderia:dragon",
+            55,
+            new int[]{5, 9, 10, 6},
+            20,
+            SoundEvents.ENDER_DRAGON_HURT,
+            4f,
+            0.2f,
+            () -> Ingredient.of(ModObjects.DRAGON_SKIN.get()));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;

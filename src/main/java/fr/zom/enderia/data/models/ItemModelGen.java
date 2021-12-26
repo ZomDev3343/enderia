@@ -4,6 +4,7 @@ import fr.zom.enderia.Enderia;
 import fr.zom.enderia.data.DataGen;
 import fr.zom.enderia.init.ModObjects;
 import fr.zom.enderia.items.BaseItem;
+import fr.zom.enderia.items.BaseItemArmor;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -25,7 +26,7 @@ public class ItemModelGen extends ItemModelProvider {
                 blockItem(itemObject.get());
             } else if (itemObject.get() instanceof TieredItem) {
                 handheld(itemObject.get());
-            } else if (itemObject.get().getClass() == Item.class || itemObject.get().getClass() == BaseItem.class) {
+            } else if (itemObject.get().getClass() == Item.class || itemObject.get().getClass() == BaseItem.class || itemObject.get().getClass() == BaseItemArmor.class) {
                 generated(itemObject.get());
             } else if (itemObject.get() instanceof ForgeSpawnEggItem) {
                 spawnEgg(itemObject.get());

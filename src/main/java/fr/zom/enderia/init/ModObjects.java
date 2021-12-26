@@ -90,6 +90,12 @@ public class ModObjects {
             new Color(67, 31, 104).getRGB(),
             new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+    public static final RegistryObject<Item> DRAGON_SKIN = ITEMS.register("dragon_skin", BaseItem::new);
+    public static final RegistryObject<Item> DRAGON_HELMET = ITEMS.register("dragon_helmet", () -> new BaseItemArmor(ModArmorMaterial.DRAGON, EquipmentSlot.HEAD));
+    public static final RegistryObject<Item> DRAGON_CHESTPLATE = ITEMS.register("dragon_chestplate", () -> new BaseItemArmor(ModArmorMaterial.DRAGON, EquipmentSlot.CHEST));
+    public static final RegistryObject<Item> DRAGON_LEGGINGS = ITEMS.register("dragon_leggings", () -> new BaseItemArmor(ModArmorMaterial.DRAGON, EquipmentSlot.LEGS));
+    public static final RegistryObject<Item> DRAGON_BOOTS = ITEMS.register("dragon_boots", () -> new BaseItemArmor(ModArmorMaterial.DRAGON, EquipmentSlot.FEET));
+
     ///////////////////////////////////////////////////////////////////////////
     // BLOCKS
     ///////////////////////////////////////////////////////////////////////////
@@ -97,10 +103,7 @@ public class ModObjects {
     public static final RegistryObject<Block> ENDERITE_BLOCK = createBlock("enderite_block", () -> new BaseBlock(Material.STONE, 5f, 20f, SoundType.METAL));
 
     public static final RegistryObject<Block> TELEPORTING_TNT = createBlock("teleporting_tnt", TeleportingTntBlock::new);
-    /* Block Tags */
-    public static final Tag.Named<Block> NEEDS_ENDRITE_TOOL = BlockTags.bind("needs_enderite_tool");
-    /* Item Tags */
-    public static final Tag.Named<Item> ENDERITE_RAW_TAG = ItemTags.bind("enderite_raw");
+
 
     ///////////////////////////////////////////////////////////////////////////
     // BLOCK ENTITIES
@@ -115,8 +118,14 @@ public class ModObjects {
     ///////////////////////////////////////////////////////////////////////////
     // TAGS
     ///////////////////////////////////////////////////////////////////////////
+
+    /* Block Tags */
+    public static final Tag.Named<Block> NEEDS_ENDRITE_TOOL = BlockTags.bind("needs_enderite_tool");
+    /* Item Tags */
+    public static final Tag.Named<Item> ENDERITE_RAW_TAG = ItemTags.bind("enderite_raw");
     public static final Tag.Named<Item> ENDERITE_INGOT_TAG = ItemTags.bind("enderite_ingot");
     public static final Tag.Named<Item> STICKS = ItemTags.bind("sticks");
+    public static final Tag.Named<Item> DRAGON_SKIN_TAG = ItemTags.bind("dragon_skin");
 
     private static RegistryObject<Block> createBlock(String name, Supplier<? extends Block> supp, CreativeModeTab group) {
         RegistryObject<Block> block = BLOCKS.register(name, supp);
